@@ -14,11 +14,16 @@ module Scraper
     headless = Headless.new
     headless.start
     browser = Watir::Browser.start url
-    browser.div(:class => "flight-tab-group-info__price-bottom").wait_until_present(10)
+    browser.div(:class => "flight-tab-group-info__price-bottom").wait_until_present(12)
     text = browser.div(:class => "flight-tab-group-info__price-bottom").text
     headless.destroy
 
-    text.delete("^0-9")
+    price = text.delete("^0-9")
+    flight_data = {}
+    flight_data[:price] = price
+    flight_data[:deep_link] = url
+
+    flight_data
   end
 
 end
