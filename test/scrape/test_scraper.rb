@@ -12,7 +12,7 @@ class ScraperTest < Minitest::Test
     to_code = "NYC"
     departing = "2015-03-06"
     returning = "2015-03-08"
-    res = Scraper.request(from_code, to_code, departing, returning)
+    res = Scraper.request(from_code: from_code, to_code: to_code, departing: departing, returning: returning)
     print res
   end
 
